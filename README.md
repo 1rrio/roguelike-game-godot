@@ -1,6 +1,5 @@
-# Nama Game
+# Sebuah game action 2D berbasis duel yang berfokus pada timing, membaca pola musuh, dan kepuasan melakukan parry.
 
-> Sebuah game action 2D berbasis duel yang berfokus pada timing, membaca pola musuh, dan kepuasan melakukan parry.
 
 ## Tentang Game
 
