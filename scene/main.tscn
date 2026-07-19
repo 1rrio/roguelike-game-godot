@@ -1,10 +1,15 @@
 [gd_scene format=3 uid="uid://bqwhbgpnx0rl6"]
 
+[ext_resource type="Script" uid="uid://bpcb57mhrvwn1" path="res://scene/main.gd" id="1_0ha60"]
+[ext_resource type="PackedScene" uid="uid://bykda3om85sa3" path="res://ui.tscn" id="1_brvut"]
 [ext_resource type="PackedScene" uid="uid://bjjqihkwjkcqf" path="res://scene/background.tscn" id="1_wp4xf"]
 [ext_resource type="PackedScene" uid="uid://b0pnxbdu3eeou" path="res://scene/player.tscn" id="2_brvut"]
 [ext_resource type="PackedScene" uid="uid://12oru7fodot0" path="res://scene/goblin.tscn" id="3_0ha60"]
 
 [node name="Main" type="Node2D" unique_id=91737298]
+script = ExtResource("1_0ha60")
+
+[node name="UI" parent="." unique_id=239181805 instance=ExtResource("1_brvut")]
 
 [node name="Background" parent="." unique_id=1020136251 instance=ExtResource("1_wp4xf")]
 

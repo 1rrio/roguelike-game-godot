@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://bykda3om85sa3"]
+
+[ext_resource type="Script" uid="uid://d2jitewm0dt2y" path="res://ui.gd" id="1_fyqef"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6ul08"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mjqq0"]
+bg_color = Color(0.8862745, 0, 0.16078432, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_upqt1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kv116"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fyqef"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m6e0p"]
+bg_color = Color(0.8862745, 0, 0.16078432, 1)
+
+[node name="UI" type="CanvasLayer" unique_id=239181805]
+script = ExtResource("1_fyqef")
+
+[node name="Control" type="Control" parent="." unique_id=1426657948]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 316.0
+offset_top = 166.0
+offset_right = 377.0
+offset_bottom = 369.0
+
+[node name="HPBar" type="ProgressBar" parent="Control" unique_id=1588272869]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 200.0
+offset_right = 199.0
+offset_bottom = 227.0
+rotation = -1.5707964
+theme_override_styles/background = SubResource("StyleBoxEmpty_6ul08")
+theme_override_styles/fill = SubResource("StyleBoxFlat_mjqq0")
+value = 100.0
+show_percentage = false
+
+[node name="StaminaBar" type="ProgressBar" parent="Control" unique_id=73895664]
+layout_mode = 0
+offset_left = 31.0
+offset_top = 200.0
+offset_right = 191.99998
+offset_bottom = 213.33337
+rotation = -1.5707964
+theme_override_styles/background = SubResource("StyleBoxEmpty_upqt1")
+theme_override_styles/fill = SubResource("StyleBoxFlat_kv116")
+value = 100.0
+show_percentage = false
+
+[node name="EnemyBar" type="ProgressBar" parent="Control" unique_id=722178609]
+layout_mode = 0
+offset_left = 469.0
+offset_top = 6.0
+offset_right = 497.0
+offset_bottom = 204.0
+theme_override_styles/background = SubResource("StyleBoxEmpty_fyqef")
+theme_override_styles/fill = SubResource("StyleBoxFlat_m6e0p")
+value = 100.0
+fill_mode = 3
+show_percentage = false
