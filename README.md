@@ -67,6 +67,14 @@ Menciptakan combat yang:
 
 ---
 
+## Credits
+Source itch.io:
+- Monsters Creatures Fantasy by LuizMelo
+- Pixel Fantasy Caves by Szadi art.
+- Free Knight by (i forgot)
+ 
+---
+
 ## Status
 
 Proyek masih berada dalam tahap pengembangan aktif dan berbagai mekanik masih dapat berubah selama proses iterasi.
