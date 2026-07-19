@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://2cpmqh8usq8v"]
+
+[ext_resource type="Texture2D" uid="uid://c2qcm2ic0ecxb" path="res://asset/enemy/Monsters_Creatures_Fantasy/Skeleton/Idle.png" id="1_cyrxt"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mb7nf"]
+atlas = ExtResource("1_cyrxt")
+region = Rect2(0, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3drt6"]
+atlas = ExtResource("1_cyrxt")
+region = Rect2(150, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bhurr"]
+atlas = ExtResource("1_cyrxt")
+region = Rect2(300, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jbvms"]
+atlas = ExtResource("1_cyrxt")
+region = Rect2(450, 0, 150, 150)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kv116"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mb7nf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3drt6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bhurr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jbvms")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 7.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d7bxq"]
+size = Vector2(26.5, 8.5)
+
+[node name="Skeleton" type="CharacterBody2D" unique_id=2112566117]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=968013220]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_kv116")
+animation = &"idle"
+frame_progress = 0.7501321
+flip_h = true
+
+[node name="TempCollision" type="CollisionShape2D" parent="." unique_id=1292967958]
+position = Vector2(-4, 22)
+shape = SubResource("RectangleShape2D_d7bxq")
