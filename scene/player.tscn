@@ -6,6 +6,11 @@
 [ext_resource type="Texture2D" uid="uid://dl0xcflp5aowq" path="res://asset/knight/NoOutline/120x80_PNGSheets/BLOCK..png" id="2_oh5ij"]
 [ext_resource type="Texture2D" uid="uid://dx0ymggvobe0q" path="res://asset/knight/NoOutline/120x80_PNGSheets/_Attack2NoMovement.png" id="3_ct4mp"]
 [ext_resource type="Texture2D" uid="uid://c6jp28rqchy5q" path="res://asset/knight/NoOutline/120x80_PNGSheets/_DeathNoMovement.png" id="3_s4jxa"]
+[ext_resource type="AudioStream" uid="uid://ykr2kih46kqa" path="res://asset/Audio/Sword Attack 1.wav" id="7_ml7e8"]
+[ext_resource type="AudioStream" uid="uid://byhae5iyhgny1" path="res://asset/Audio/Sword Attack 2.wav" id="8_ihjo1"]
+[ext_resource type="AudioStream" uid="uid://bkxecqbl25w0w" path="res://asset/Audio/Sword Attack 3.wav" id="9_dk1vr"]
+[ext_resource type="AudioStream" uid="uid://woi6ishfdrr7" path="res://asset/Audio/Sword Blocked 1.wav" id="10_34jf3"]
+[ext_resource type="Texture2D" uid="uid://dnngwxcan6tid" path="res://asset/vfx/spritesheet.png" id="11_ihjo1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h3knh"]
 atlas = ExtResource("2_oh5ij")
@@ -336,6 +341,63 @@ size = Vector2(20, 30)
 [sub_resource type="CircleShape2D" id="CircleShape2D_kv116"]
 radius = 12.0415945
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_5wapc"]
+atlas = ExtResource("11_ihjo1")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xj5ck"]
+atlas = ExtResource("11_ihjo1")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6lu7o"]
+atlas = ExtResource("11_ihjo1")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8rkx0"]
+atlas = ExtResource("11_ihjo1")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wyue1"]
+atlas = ExtResource("11_ihjo1")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oyaf6"]
+atlas = ExtResource("11_ihjo1")
+region = Rect2(240, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mtygy"]
+atlas = ExtResource("11_ihjo1")
+region = Rect2(288, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_upqt1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5wapc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xj5ck")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6lu7o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8rkx0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wyue1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oyaf6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mtygy")
+}],
+"loop": 0,
+"name": &"block",
+"speed": 15.0
+}]
+
 [node name="Player" type="CharacterBody2D" unique_id=1045470150]
 script = ExtResource("1_hjaqi")
 max_hp = 100
@@ -346,6 +408,7 @@ texture_filter = 1
 position = Vector2(5, -22)
 sprite_frames = SubResource("SpriteFrames_kv116")
 animation = &"block"
+frame = 4
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1573783390]
 libraries/ = SubResource("AnimationLibrary_2fvbb")
@@ -376,6 +439,30 @@ position = Vector2(17, -3)
 shape = SubResource("CircleShape2D_kv116")
 disabled = true
 debug_color = Color(0.3349443, 0.48688352, 1, 0.41960785)
+
+[node name="Attack1" type="AudioStreamPlayer" parent="." unique_id=2010238244]
+stream = ExtResource("7_ml7e8")
+
+[node name="Attack2" type="AudioStreamPlayer" parent="." unique_id=572206999]
+stream = ExtResource("8_ihjo1")
+
+[node name="Attack3" type="AudioStreamPlayer" parent="." unique_id=1562891996]
+stream = ExtResource("9_dk1vr")
+
+[node name="kill" type="AudioStreamPlayer" parent="." unique_id=1291585675]
+
+[node name="Block" type="AudioStreamPlayer" parent="." unique_id=573796498]
+stream = ExtResource("10_34jf3")
+
+[node name="BlockImpact" type="AnimatedSprite2D" parent="." unique_id=763585534]
+visible = false
+texture_filter = 1
+position = Vector2(17, -3)
+scale = Vector2(0.5416667, 0.56250006)
+sprite_frames = SubResource("SpriteFrames_upqt1")
+animation = &"block"
+frame = 6
+frame_progress = 1.0
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]

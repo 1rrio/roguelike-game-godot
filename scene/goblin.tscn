@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bm7ohwcb23pdl" path="res://asset/enemy/Monsters_Creatures_Fantasy/Goblin/Take Hit.png" id="2_akkl6"]
 [ext_resource type="Texture2D" uid="uid://bbfy88ofxxyyq" path="res://asset/enemy/Monsters_Creatures_Fantasy/Goblin/Attack.png" id="2_f3ng6"]
 [ext_resource type="Texture2D" uid="uid://b7auj7w2gx3ol" path="res://asset/enemy/Monsters_Creatures_Fantasy/Goblin/Death.png" id="2_smgcp"]
+[ext_resource type="AudioStream" uid="uid://c207elws0q7vt" path="res://asset/Audio/Sword Impact Hit 3.wav" id="6_unede"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dppnf"]
 atlas = ExtResource("2_f3ng6")
@@ -270,7 +271,8 @@ script = ExtResource("1_uwj4q")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=968013220]
 texture_filter = 1
-position = Vector2(3, -14)
+position = Vector2(3, -11)
+scale = Vector2(0.88, 0.88)
 sprite_frames = SubResource("SpriteFrames_unede")
 animation = &"attack"
 flip_h = true
@@ -304,6 +306,9 @@ position = Vector2(-17, -8)
 shape = SubResource("CircleShape2D_kv116")
 disabled = true
 debug_color = Color(0.857588, 0.00073255005, 0.8830355, 0.41960785)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1101176954]
+stream = ExtResource("6_unede")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]

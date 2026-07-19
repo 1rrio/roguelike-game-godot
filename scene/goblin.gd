@@ -21,6 +21,7 @@ var state = State.IDLE
 @onready var hitbox: CollisionShape2D = $Hitbox/CollisionShape2D
 @onready var sprite = $AnimatedSprite2D
 @onready var hurt_box: CollisionShape2D = $HurtBox/CollisionShape2D
+@onready var AttackIn: AudioStreamPlayer = $AudioStreamPlayer
 
 func _process(delta):
 	match state:
@@ -77,13 +78,6 @@ func _on_animated_sprite_2d_animation_finished():
 			hitbox.disabled = true
 			attack_timer = attack_delay.pick_random()
 
-func _on_hit_box_area_entered(area):
-	if state != State.ATTACK:
-		return
-
-	if area.is_in_group("PlayerHurtBox"):
-		area.get_parent().hit(damage)
-
 
 func _on_hitbox_area_entered(area: Area2D) -> void:
 	if state != State.ATTACK:
@@ -91,3 +85,4 @@ func _on_hitbox_area_entered(area: Area2D) -> void:
 
 	if area.is_in_group("PlayerHurtBox"):
 		area.get_parent().hit(damage)
+		AttackIn.play()

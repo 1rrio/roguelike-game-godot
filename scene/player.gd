@@ -24,9 +24,21 @@ enum State {
 
 var state = State.IDLE
 var hp: int
+@onready var block_impact: AnimatedSprite2D = $BlockImpact
+
 @onready var hitbox: CollisionShape2D = $HitBox/CollisionShape2D
 @onready var sprite = $AnimatedSprite2D
 @onready var blockWindow: CollisionShape2D = $PlayerPerfectBlockWindow/CollisionShape2D
+@onready var blockAudio: AudioStreamPlayer = $Block
+@onready var attack_1: AudioStreamPlayer = $Attack1
+@onready var attack_2: AudioStreamPlayer = $Attack2
+@onready var attack_sounds := [
+	attack_1,
+	attack_2,
+]
+func play_random_attack():
+	var sound = attack_sounds.pick_random()
+	sound.play()
 
 func _ready():
 	hp = max_hp
@@ -35,7 +47,9 @@ func _ready():
 	
 	hp_changed.emit(hp)
 	stamina_changed.emit(stamina)
-	
+
+
+
 func regen_stamina(delta):
 	var old_stamina = stamina
 
@@ -63,6 +77,7 @@ func _process(delta):
 		State.IDLE:
 			regen_stamina(delta)
 			handle_idle()
+			block_impact.visible = false
 
 		State.LIGHT_ATTACK:
 			# boleh tambahkan logic attack di sini nanti
@@ -81,6 +96,8 @@ func light_attack():
 	state = State.LIGHT_ATTACK
 	sprite.play("lightAttack1")
 	hitbox.disabled = false
+	play_random_attack()
+
 	
 func block():
 	if state == State.LIGHT_ATTACK:
@@ -89,6 +106,8 @@ func block():
 	state = State.BLOCK
 	blockWindow.disabled = false
 	sprite.play("block")
+
+
 	
 func hit(dmg: int):
 	if state == State.DEAD:
@@ -96,10 +115,15 @@ func hit(dmg: int):
 
 	if state == State.BLOCK:
 		dmg = max(1, int(round(dmg * block_damage_multiplier)))
+		blockAudio.play()
+		block_impact.visible = true
+		block_impact.play()
+		stamina = min(stamina + 20, max_stamina)
 
 	hp -= dmg
 	hp = max(hp, 0)
 	Debug.log("PLAYER", "Hit %d | HP %d/%d" % [dmg, hp, max_hp])
+	Debug.log("STAMINA", "Max Stamina %d/%d" % [stamina, max_stamina])
 	hp_changed.emit(hp)
 
 	if hp <= 0:
