@@ -4,7 +4,10 @@
 [ext_resource type="PackedScene" uid="uid://bykda3om85sa3" path="res://ui.tscn" id="1_brvut"]
 [ext_resource type="PackedScene" uid="uid://bjjqihkwjkcqf" path="res://scene/background.tscn" id="1_wp4xf"]
 [ext_resource type="PackedScene" uid="uid://b0pnxbdu3eeou" path="res://scene/player.tscn" id="2_brvut"]
+[ext_resource type="PackedScene" uid="uid://j5p2m64cb0ak" path="res://SelectBuff.tscn" id="2_of57s"]
 [ext_resource type="PackedScene" uid="uid://12oru7fodot0" path="res://scene/goblin.tscn" id="3_0ha60"]
+[ext_resource type="Script" uid="uid://0kysaitm70g7" path="res://scene/monster_spawner.gd" id="5_p1hux"]
+[ext_resource type="PackedScene" uid="uid://2cpmqh8usq8v" path="res://scene/skeleton.tscn" id="6_4j5ol"]
 
 [node name="Main" type="Node2D" unique_id=91737298]
 script = ExtResource("1_0ha60")
@@ -17,10 +20,25 @@ script = ExtResource("1_0ha60")
 position = Vector2(465, 261)
 scale = Vector2(1.535, 1.535)
 
-[node name="Goblin" parent="." unique_id=2112566117 instance=ExtResource("3_0ha60")]
-position = Vector2(516, 270)
-scale = Vector2(1.535, 1.535)
-
 [node name="Camera2D" type="Camera2D" parent="." unique_id=628666249]
 position = Vector2(488, 268)
 zoom = Vector2(3.16, 3.16)
+
+[node name="MonsterSpawner" type="Node2D" parent="." unique_id=1500022559]
+script = ExtResource("5_p1hux")
+
+[node name="Marker2D" type="Marker2D" parent="MonsterSpawner" unique_id=157486384]
+position = Vector2(516, 288)
+
+[node name="Enemies" type="Node2D" parent="MonsterSpawner/Marker2D" unique_id=1616640952]
+position = Vector2(-516, -288)
+
+[node name="Goblin" parent="MonsterSpawner/Marker2D/Enemies" unique_id=2112566117 instance=ExtResource("3_0ha60")]
+position = Vector2(516, 270)
+scale = Vector2(1.535, 1.535)
+
+[node name="Skeleton" parent="MonsterSpawner/Marker2D/Enemies" unique_id=718597241 instance=ExtResource("6_4j5ol")]
+position = Vector2(517, 262)
+
+[node name="CanvasLayer" parent="MonsterSpawner" unique_id=1968238434 instance=ExtResource("2_of57s")]
+visible = false

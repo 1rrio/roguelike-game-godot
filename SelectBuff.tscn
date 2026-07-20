@@ -1,0 +1,193 @@
+[gd_scene format=3 uid="uid://j5p2m64cb0ak"]
+
+[ext_resource type="Texture2D" uid="uid://c82647ha00tno" path="res://asset/icon/icon_heart.png" id="1_3051d"]
+[ext_resource type="Texture2D" uid="uid://bmavpkp0fis3r" path="res://asset/icon/icon_sword.png" id="2_yvgkt"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kv116"]
+bg_color = Color(0.6580891, 0.33900687, 0.5761353, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="CanvasLayer" type="CanvasLayer" unique_id=1968238434]
+
+[node name="SelectUpgrade" type="Control" parent="." unique_id=838541175]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="SelectUpgrade" unique_id=1805910060]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.2, 0.2, 0.2, 0.7529412)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="SelectUpgrade" unique_id=710246606]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="SelectUpgrade/HBoxContainer" unique_id=344227205]
+custom_minimum_size = Vector2(150, 200)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_kv116")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SelectUpgrade/HBoxContainer/Panel" unique_id=1698251626]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="SelectUpgrade/HBoxContainer/Panel/VBoxContainer" unique_id=1443302022]
+layout_mode = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 30
+
+[node name="TextureRect" type="TextureRect" parent="SelectUpgrade/HBoxContainer/Panel/VBoxContainer/MarginContainer" unique_id=148075501]
+texture_filter = 1
+custom_minimum_size = Vector2(50, 75)
+layout_mode = 2
+texture = ExtResource("1_3051d")
+
+[node name="MarginContainer2" type="MarginContainer" parent="SelectUpgrade/HBoxContainer/Panel/VBoxContainer" unique_id=1484117738]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="SelectUpgrade/HBoxContainer/Panel/VBoxContainer/MarginContainer2" unique_id=819544316]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 0)
+text = "Health on Block"
+horizontal_alignment = 1
+
+[node name="MarginContainer3" type="MarginContainer" parent="SelectUpgrade/HBoxContainer/Panel/VBoxContainer" unique_id=1272492914]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="SelectUpgrade/HBoxContainer/Panel/VBoxContainer/MarginContainer3" unique_id=816692104]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 10
+text = "+10 Health after successful block"
+horizontal_alignment = 1
+
+[node name="Damage" type="HBoxContainer" parent="SelectUpgrade/HBoxContainer" unique_id=2021094705]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="SelectUpgrade/HBoxContainer/Damage" unique_id=133335769]
+custom_minimum_size = Vector2(150, 200)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_kv116")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SelectUpgrade/HBoxContainer/Damage/Panel" unique_id=1654969143]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="SelectUpgrade/HBoxContainer/Damage/Panel/VBoxContainer" unique_id=1645394916]
+layout_mode = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 30
+
+[node name="TextureRect" type="TextureRect" parent="SelectUpgrade/HBoxContainer/Damage/Panel/VBoxContainer/MarginContainer" unique_id=1156649307]
+texture_filter = 1
+custom_minimum_size = Vector2(50, 75)
+layout_mode = 2
+texture = ExtResource("2_yvgkt")
+
+[node name="MarginContainer2" type="MarginContainer" parent="SelectUpgrade/HBoxContainer/Damage/Panel/VBoxContainer" unique_id=208733782]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="SelectUpgrade/HBoxContainer/Damage/Panel/VBoxContainer/MarginContainer2" unique_id=198577446]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 0)
+text = "Damage"
+horizontal_alignment = 1
+
+[node name="MarginContainer3" type="MarginContainer" parent="SelectUpgrade/HBoxContainer/Damage/Panel/VBoxContainer" unique_id=2131915193]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="SelectUpgrade/HBoxContainer/Damage/Panel/VBoxContainer/MarginContainer3" unique_id=1246666497]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 14
+text = "Full health regen"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="SelectUpgrade/HBoxContainer/Damage" unique_id=1224410039]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="SelectUpgrade/HBoxContainer/Damage/HBoxContainer" unique_id=1961579626]
+custom_minimum_size = Vector2(150, 200)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_kv116")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SelectUpgrade/HBoxContainer/Damage/HBoxContainer/Panel" unique_id=527042501]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="SelectUpgrade/HBoxContainer/Damage/HBoxContainer/Panel/VBoxContainer" unique_id=678093187]
+layout_mode = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 30
+
+[node name="TextureRect" type="TextureRect" parent="SelectUpgrade/HBoxContainer/Damage/HBoxContainer/Panel/VBoxContainer/MarginContainer" unique_id=2145489448]
+texture_filter = 1
+custom_minimum_size = Vector2(50, 75)
+layout_mode = 2
+texture = ExtResource("1_3051d")
+
+[node name="MarginContainer2" type="MarginContainer" parent="SelectUpgrade/HBoxContainer/Damage/HBoxContainer/Panel/VBoxContainer" unique_id=832247579]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="SelectUpgrade/HBoxContainer/Damage/HBoxContainer/Panel/VBoxContainer/MarginContainer2" unique_id=980875507]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 0)
+text = "Full Health"
+horizontal_alignment = 1
+
+[node name="MarginContainer3" type="MarginContainer" parent="SelectUpgrade/HBoxContainer/Damage/HBoxContainer/Panel/VBoxContainer" unique_id=613429623]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="SelectUpgrade/HBoxContainer/Damage/HBoxContainer/Panel/VBoxContainer/MarginContainer3" unique_id=547333150]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 14
+text = "Full health regen"
+horizontal_alignment = 1

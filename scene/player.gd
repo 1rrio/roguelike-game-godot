@@ -3,7 +3,7 @@ extends Node2D
 @export var max_hp := 10
 @export var damage := 1
 @export var parry_window := 0.15
-@export var block_damage_multiplier := 0.3
+@export var block_damage_multiplier := 0.2
 var stamina: float
 #stamina
 @export var max_stamina := 100
@@ -25,7 +25,7 @@ enum State {
 var state = State.IDLE
 var hp: int
 @onready var block_impact: AnimatedSprite2D = $BlockImpact
-
+@onready var hurt_box: Area2D = $HurtBox
 @onready var hitbox: CollisionShape2D = $HitBox/CollisionShape2D
 @onready var sprite = $AnimatedSprite2D
 @onready var blockWindow: CollisionShape2D = $PlayerPerfectBlockWindow/CollisionShape2D
@@ -114,6 +114,7 @@ func hit(dmg: int):
 		return
 
 	if state == State.BLOCK:
+		
 		dmg = max(1, int(round(dmg * block_damage_multiplier)))
 		blockAudio.play()
 		block_impact.visible = true
@@ -130,6 +131,7 @@ func hit(dmg: int):
 		die()
 func die():
 	if state == State.DEAD:
+		
 		return
 
 	Debug.log("PLAYER", "Dead")
@@ -148,11 +150,12 @@ func _on_animated_sprite_2d_animation_finished():
 
 		State.DEAD:
 			print("Game Over")
+			
 			# nanti bisa munculkan UI Game Over atau restart
 			
 func _on_hit_box_area_entered(area):
 	if state == State.DEAD:
 		return
 
-	if area.is_in_group("HurtBox_Goblin"):
+	if area.is_in_group("HurtBox_Goblin") or area.is_in_group("HurtBox_Enemy"):
 		area.get_parent().hit(damage)

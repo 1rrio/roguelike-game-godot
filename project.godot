@@ -28,6 +28,7 @@ window/stretch/aspect="expand"
 
 HurtBox_Goblin=""
 PlayerHurtBox=""
+HurtBox_Enemy=""
 
 [input]
 

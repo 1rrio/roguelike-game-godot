@@ -9,7 +9,15 @@ extends CanvasLayer
 @onready var hp_enemy: Label = $Control/HpEnemy
 
 
+var current_enemy = null
+
 func set_enemy(enemy):
+	if current_enemy != null:
+		if current_enemy.hp_changed.is_connected(update_enemy_hp):
+			current_enemy.hp_changed.disconnect(update_enemy_hp)
+
+	current_enemy = enemy
+
 	enemy_bar.max_value = enemy.max_hp
 	enemy_bar.value = enemy.hp
 	enemy_bar_back.max_value = enemy.max_hp

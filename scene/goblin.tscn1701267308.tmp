@@ -268,7 +268,6 @@ size = Vector2(20, 35)
 
 [node name="Goblin" type="CharacterBody2D" unique_id=2112566117]
 script = ExtResource("1_uwj4q")
-damage = 25
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=968013220]
 texture_filter = 1

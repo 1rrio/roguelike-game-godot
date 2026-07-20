@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://dwx5mj7pi5yii"]
+
+[sub_resource type="FontVariation" id="FontVariation_kv116"]
+
+[node name="Control" type="Control" unique_id=2009992347]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=715433406]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.18039216, 0, 0, 0.57254905)
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=643155672]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 256.0
+offset_top = 144.0
+offset_right = -256.0
+offset_bottom = -144.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="MarginContainer" unique_id=765959932]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 135
+text = "YOU DIED"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="MarginContainer" unique_id=1556385758]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_fonts/font = SubResource("FontVariation_kv116")
+text = "RESTART"

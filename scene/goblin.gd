@@ -3,6 +3,7 @@ extends Node2D
 @export var max_hp := 50
 @export var damage := 10
 signal hp_changed(current_hp)
+signal died
 var hp: int
 var attack_timer := 0.0
 @export var attack_delay := [
@@ -53,10 +54,31 @@ func attack():
 
 	hitbox.disabled = false
 func die():
+	if state == State.DEAD:
+		return
+
 	state = State.DEAD
 	hurt_box.set_deferred("disabled", true)
+	hitbox.set_deferred("disabled", true)
 	sprite.play("dead")
-	
+
+	died.emit()
+
+func reset_enemy():
+	await get_tree().create_timer(0.5).timeout
+	hp = max_hp
+	state = State.IDLE
+
+	hurt_box.disabled = false
+	hitbox.set_deferred("disabled", true)
+
+	visible = true
+
+	sprite.play("idle")
+
+	hp_changed.emit(hp)
+
+	attack_timer = attack_delay.pick_random()
 func hit(damage: int):
 	if state == State.DEAD:
 		return
@@ -70,6 +92,7 @@ func hit(damage: int):
 
 	if hp <= 0:
 		die()
+
 func _on_animated_sprite_2d_animation_finished():
 	match state:
 		State.ATTACK:
@@ -78,7 +101,14 @@ func _on_animated_sprite_2d_animation_finished():
 			hitbox.disabled = true
 			attack_timer = attack_delay.pick_random()
 
+		State.DEAD:
+			visible = false
 
+func deactivate():
+	visible = false
+
+	hurt_box.set_deferred("disabled", true)
+	hitbox.set_deferred("disabled", true)
 func _on_hitbox_area_entered(area: Area2D) -> void:
 	if state != State.ATTACK:
 		return
